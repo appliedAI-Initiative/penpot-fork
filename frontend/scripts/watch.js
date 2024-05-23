@@ -15,6 +15,8 @@ async function compileSassAll() {
 
   sass = await h.compileSassAll(worker);
   let output = await h.concatSass(sass);
+
+  await fs.mkdir("./resources/public/css", { recursive: true });
   await fs.writeFile("./resources/public/css/main.css", output);
 
   const end = process.hrtime(start);
